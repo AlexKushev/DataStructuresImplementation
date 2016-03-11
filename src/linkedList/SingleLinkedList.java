@@ -53,6 +53,46 @@ public class SingleLinkedList {
 		}
 	}
 
+	public void insertAt(int index, Integer data) {
+		if ((index <= 0) || (index > size)) {
+			return;
+		} else if (index == size) {
+			append(data);
+		} else {
+			Node n = new Node(data);
+			Node x = header.next;
+			int count = 1;
+			while (count != index - 1) {
+				x = x.next;
+				count++;
+			}
+			Node temp = x.next;
+			x.next = n;
+			n.next = temp;
+			size++;
+		}
+
+	}
+
+	public void removeAt(int index) {
+		if ((index <= 0) || (index > size)) {
+			return;
+		} else if (index == 1) {
+			removeFirst();
+		} else if (index == size) {
+			removeLast();
+		} else {
+			Node n = header.next;
+			int count = 1;
+			while (count != index - 1) {
+				n = n.next;
+				count++;
+			}
+			n.next = n.next.next;
+			size--;
+		}
+	}
+
 	public int getSize() {
 		return this.size;
 	}
