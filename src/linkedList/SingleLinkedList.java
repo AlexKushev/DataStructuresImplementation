@@ -33,6 +33,26 @@ public class SingleLinkedList {
 		}
 	}
 
+	public void removeLast() {
+		if (size == 1) {
+			header.next = null;
+			lastNode = header;
+			size--;
+		} else if (size != 0) {
+			Node n = header.next;
+			int count = 1;
+			while (count != size - 1) {
+				n = n.next;
+				count++;
+			}
+
+			lastNode = n;
+			lastNode.next = null;
+
+			size--;
+		}
+	}
+
 	public int getSize() {
 		return this.size;
 	}

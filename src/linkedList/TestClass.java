@@ -8,9 +8,7 @@ public class TestClass {
 		list.append(5);
 		list.append(4);
 		list.append(3);
-		list.removeFirst();
-		list.removeFirst();
-
+		list.removeLast();
 		System.out.println(list);
 	}
 
