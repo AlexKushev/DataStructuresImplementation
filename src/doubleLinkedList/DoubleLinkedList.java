@@ -29,6 +29,26 @@ public class DoubleLinkedList {
 		}
 	}
 
+	public void removeFirst() {
+		if (size != 0) {
+			header.next = header.next.next;
+			header.next.next.previous = header;
+			size--;
+		}
+	}
+
+	public void removeLast() {
+		if (size == 1) {
+			header.next = null;
+			lastNode = header;
+			size--;
+		} else if (size != 0) {
+			lastNode.previous.next = null;
+			lastNode = lastNode.previous;
+			size--;
+		}
+	}
+
 	public int getSize() {
 		return this.size;
 	}
