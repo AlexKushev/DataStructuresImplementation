@@ -1,7 +1,5 @@
 package doubleLinkedList;
 
-import doubleLinkedList.Node;
-
 public class DoubleLinkedList {
 
 	private Node header;
@@ -47,6 +45,61 @@ public class DoubleLinkedList {
 			lastNode = lastNode.previous;
 			size--;
 		}
+	}
+
+	public void insertAt(int position, Integer data) {
+		if (position <= 0 || position > size) {
+			return;
+		} else if (position == size) {
+			append(data);
+		} else {
+			Node n = new Node(data);
+			Node x = header.next;
+			int count = 1;
+			while (count != position - 1) {
+				x = x.next;
+				count++;
+			}
+
+			Node temp = x.next;
+			x.next = n;
+			n.previous = x;
+			n.next = temp;
+			n.next.previous = n;
+			size++;
+		}
+	}
+
+	public void removeAt(int index) {
+		if ((index <= 0) || (index > size)) {
+			return;
+		} else if (index == 1) {
+			removeFirst();
+		} else if (index == size) {
+			removeLast();
+		} else {
+			Node n = header.next;
+			int count = 1;
+			while (count != index - 1) {
+				n = n.next;
+				count++;
+			}
+			n.next = n.next.next;
+			n.next.previous = n;
+			size--;
+		}
+	}
+
+	public String printReverse() {
+		Node n = lastNode;
+		String string = "";
+		while (n != header){
+			string = string + n.data + " ";
+			n = n.previous;
+		}
+		
+		return string;
+		
 	}
 
 	public int getSize() {
