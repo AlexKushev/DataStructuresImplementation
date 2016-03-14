@@ -99,10 +99,15 @@ public class SingleLinkedList {
 
 	public String toString() {
 		Node n = header.next;
-		String string = "";
+		String string = "[";
 		while (n != null) {
-			string = string + n.data + " ";
+			string = string + n.data;
 			n = n.next;
+			if (n != null) {
+				string = string + ", ";
+			} else {
+				string = string + "]";
+			}
 		}
 		return string;
 	}
