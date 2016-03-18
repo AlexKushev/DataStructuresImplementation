@@ -68,7 +68,6 @@ public class ArrayQueue implements QueueInterface {
 		return size == 0;
 	}
 
-	@Override
 	public boolean isFull() {
 		return array.length == size;
 	}

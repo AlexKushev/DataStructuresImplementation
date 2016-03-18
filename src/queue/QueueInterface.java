@@ -8,8 +8,6 @@ public interface QueueInterface {
 
 	public boolean isEmpty();
 
-	public boolean isFull();
-
 	public int getSize();
 
 	public Integer peek();
