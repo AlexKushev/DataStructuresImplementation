@@ -34,7 +34,13 @@ public class ArrayQueue implements QueueInterface {
 	}
 
 	private void resize() {
-
+		int[] temp = new int[array.length * 2];
+		for (int i = 0; i < size; i++) {
+			temp[i] = array[(header + i) % array.length];
+		}
+		array = temp;
+		header = 0;
+		tail = size - 1;
 	}
 
 	@Override
@@ -76,6 +82,14 @@ public class ArrayQueue implements QueueInterface {
 	public Integer peek() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String toString() {
+		String string = "";
+		for (int i = 0; i < size; i++) {
+			string = string + array[(header + i) % array.length] + " ";
+		}
+		return string;
 	}
 
 }
